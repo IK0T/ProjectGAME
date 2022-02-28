@@ -28,7 +28,9 @@ class Input:
             return bool(keyboard.is_pressed(key) and pygame.mouse.get_focused())
 
     def is_just_pressed(self, key, input_state=""):
+        
         exec("self.check_key = self.key_" + key)
+        
         if input_state != "":
             return bool(self.check_key == False and keyboard.is_pressed(key) and input_state == self.input_state)
         else:
