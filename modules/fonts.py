@@ -26,11 +26,9 @@ class Font_Handler:
     def get_font(self, font, bold=False, italic=False, underline=False):
         if font in self.fonts:
             font_file = self.fonts[font]["file"]
-                
             font_file.bold = bold
             font_file.italic = italic
             font_file.underline = underline
-            
             return font_file
         else:
             return self.fonts[list(self.fonts.keys())[0]]["file"]
