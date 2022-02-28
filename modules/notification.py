@@ -54,9 +54,9 @@ class Notification_Handler:
 
             height = 32 + (15 * len(display_text))
 
-            pygame.draw.rect(self.game.main_surface, self.game.color_handler.get_color_rgb("notification.border"), ((self.game.main_surface.get_width() - 250, last_end_y), (230, height)), False)
+            pygame.draw.rect(self.game.main_surface, self.game.color_handler.get_color_rgb("notification.border"), ((self.game.main_surface.get_width() - 250, last_end_y), (230, height)), False, 10)
 
-            pygame.draw.rect(self.game.main_surface, self.game.color_handler.get_color_rgb("notification.fill"), ((self.game.main_surface.get_width() - 246, last_end_y + 4), (222, height - 8)), False)
+            pygame.draw.rect(self.game.main_surface, self.game.color_handler.get_color_rgb("notification.fill"), ((self.game.main_surface.get_width() - 246, last_end_y + 4), (222, height - 8)), False, 10)
 
             title_surface = self.game.font_handler.get_font("default_18", bold=True).render(notification["title"], True, self.game.color_handler.get_color_rgb("notification.text"))
 
