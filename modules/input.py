@@ -19,7 +19,6 @@ class Input:
 
     def __init__(self):
         self.check_keys()
-
         self.any_key_pressed = False
 
     def is_pressed(self, key, input_state=""):
