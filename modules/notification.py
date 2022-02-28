@@ -19,7 +19,6 @@ class Notification_Handler:
         last_end_y = 22
         
         for index, notification in enumerate(self.notifications):
-            
             display_text = []
             current = ""
             message = notification["message"].split(" ")
