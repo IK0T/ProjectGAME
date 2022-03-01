@@ -21,10 +21,10 @@ class taptap:
         self.game.sound_handler.load_sound("key_sound_2", "key_sound_2")
         self.game.sound_handler.load_sound("key_sound_3", "key_sound_3")
 
-        if not os.path.exists(os.path.join("save_data", "typemania_save.json")):
-            with open(os.path.join("save_data", "typemania_save.json"), "w") as file:
+        if not os.path.exists(os.path.join("save_data", "taptap_save.json")):
+            with open(os.path.join("save_data", "taptap_save.json"), "w") as file:
                 file.write('{"all_plays": []}') 
-        with open(os.path.join("save_data", "typemania_save.json"), "r") as file_save_file:
+        with open(os.path.join("save_data", "taptap_save.json"), "r") as file_save_file:
             self.save_file = json.load(file_save_file)
 
     quotes = [{'quote': 'The quick brown fox jumps over the lazy dog', 'author': 'The Boston Journal'},
