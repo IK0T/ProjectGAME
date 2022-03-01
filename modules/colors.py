@@ -1,4 +1,6 @@
-import json, os
+import json
+import os
+
 from colormap import hex2rgb
 
 class Color_Handler:
@@ -7,7 +9,8 @@ class Color_Handler:
     
     def get_color_hex(self, color_link):
         
-        with open(os.path.join("src", "resources", self.game.current_assetpack, "assets", "colors.json"), "r") as color_file:
+        with open(os.path.join("src", "resources", self.game.current_assetpack,
+                               "assets", "colors.json"), "r") as color_file:
             color_json = json.load(color_file)
          
         if color_link in color_json:
@@ -17,7 +20,8 @@ class Color_Handler:
 
     def get_color_rgb(self, color_link):
         
-        with open(os.path.join("src", "resources", self.game.current_assetpack, "assets", "colors.json"), "r") as color_file:
+        with open(os.path.join("src", "resources", self.game.current_assetpack,
+                               "assets", "colors.json"), "r") as color_file:
             color_json = json.load(color_file)
         
         return hex2rgb(color_json[color_link])
