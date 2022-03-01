@@ -27,10 +27,6 @@ class taptap:
         with open(os.path.join("save_data", "taptap_save.json"), "r") as file_save_file:
             self.save_file = json.load(file_save_file)
 
-    quotes = [{'quote': 'The quick brown fox jumps over the lazy dog', 'author': 'The Boston Journal'},
-              {'quote': 'I have no special talent. I am only passionately curious.', 'author': 'Albert Einstein'},
-              {'quote': 'Dont count the days, make the days count.', 'author': 'Muhammad Ali'}]
-
     current_scene = ""
 
     clock = pygame.time.Clock()
