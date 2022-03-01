@@ -1,4 +1,5 @@
-import pygame, keyboard
+import pygame
+import keyboard
 
 class Input:
 
