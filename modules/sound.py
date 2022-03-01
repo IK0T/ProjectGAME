@@ -10,7 +10,9 @@ class Sound_Handler:
 
     def load_sound(self, sound_id, sound_file):
         self.sounds[sound_id] = {
-            "file": pygame.mixer.Sound(os.path.join("src", "resources", self.game.current_assetpack, "assets", "sounds", sound_file + ".ogg"))
+            "file": pygame.mixer.Sound(os.path.join("src", "resources",
+                                                    self.game.current_assetpack, "assets",
+                                                    "sounds", sound_file + ".ogg"))
         }
 
     def play_sound(self, sound_id):
