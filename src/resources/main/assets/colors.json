@@ -1,0 +1,15 @@
+{
+    "notification.border": "#97Cf9A",
+    "notification.fill": "#A3D9A6",
+    "notification.text": "#3A6351",
+
+    "options.background": "#A3D9A6",
+    "options.text": "#3A6351",
+
+    "taptap.background": "#C3E6C5",
+    "taptap.marker": "#2C4A3D",
+    "taptap.text": "#3A6351",
+    "taptap.dark_text": "#87A8A4",
+    "taptap.result_screen_panels": "#A3D9A6",
+    "taptap.result_screen_front": "#86B388"
+}
