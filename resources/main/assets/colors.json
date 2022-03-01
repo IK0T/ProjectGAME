@@ -1,15 +1,15 @@
 {
-    "notification.border": "#f5a478",
-    "notification.fill": "#c5d4de",
-    "notification.text": "#272a2e",
+    "notification.border": "#97Cf9A",
+    "notification.fill": "#A3D9A6",
+    "notification.text": "#3A6351",
 
-    "options.background": "#cf8055",
-    "options.text": "#F7F7F7",
+    "options.background": "#A3D9A6",
+    "options.text": "#3A6351",
 
-    "taptap.background": "#FFBC97",
-    "taptap.marker": "#4D5F6A",
-    "taptap.text": "#F7F7F7",
-    "taptap.dark_text": "#FF7800",
-    "taptap.result_screen_panels": "#FF7800",
-    "taptap.result_screen_front": "#4d5f6a"
+    "taptap.background": "#C3E6C5",
+    "taptap.marker": "#2C4A3D",
+    "taptap.text": "#3A6351",
+    "taptap.dark_text": "#87A8A4",
+    "taptap.result_screen_panels": "#A3D9A6",
+    "taptap.result_screen_front": "#86B388"
 }
