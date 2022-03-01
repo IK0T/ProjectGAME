@@ -1,4 +1,9 @@
-import pygame, os, json, pyautogui, sys, time
+import pygame
+import os
+import json
+import pyautogui
+import sys
+import time
 
 from .modules.input import Input
 from .modules.notification import Notification_Handler
@@ -55,7 +60,8 @@ class Game:
         pygame.display.set_icon(icon)
 
     def initialize(self):
-        self.notification_handler.send("Successful Start", "Game started succesfully on version " + self.properties["version"])
+        self.notification_handler.send("Successful Start",
+                                       "Game started succesfully on version " + self.properties["version"])
         self.change_title(self.properties["id"])
         self.input.input_state = "game"
 
@@ -86,8 +92,10 @@ class Game:
 
         self.notification_handler.render()
 
-        copyright_text = self.font_handler.get_font("default_15").render("IK0T&ARSENIQ", True, (self.color_handler.get_color_rgb("taptap.text")))
-        self.main_surface.blit(copyright_text, (self.display_width / 2 - copyright_text.get_width() / 2, self.display_height - self.font_handler.get_font_size("default_15") - 10))
+        copyright_text = self.font_handler.get_font("default_15").render("IK0T&ARSENIQ", True,
+                                                                         (self.color_handler.get_color_rgb("taptap.text")))
+        self.main_surface.blit(copyright_text, (self.display_width / 2 - copyright_text.get_width() / 2,
+                                                self.display_height - self.font_handler.get_font_size("default_15") - 10))
 
     def main_loop_final(self, update_time, render_time):
         if self.scene_options.show_fps == True:
@@ -96,7 +104,8 @@ class Game:
         surf = self.main_surface
         if self.main_screen.get_width() != self.main_surface.get_width():
             if self.main_screen.get_height() != self.main_surface.get_height():
-                surf = pygame.transform.scale(self.main_surface, (self.main_screen.get_width(), self.main_screen.get_height()))
+                surf = pygame.transform.scale(self.main_surface, (self.main_screen.get_width(),
+                                                                  self.main_screen.get_height()))
         self.main_screen.blit(surf, (0, 0))
         pygame.display.update()
         self.clock.tick(60)
