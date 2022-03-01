@@ -1,6 +1,6 @@
 import pygame
 
-BLACK = (0,0,0)
+BLACK = (25, 59, 25)
  
 class Paddle(pygame.sprite.Sprite):
     
