@@ -1,4 +1,6 @@
 import pygame
+import os
+
 from .modules.options.fps import fps
 
 
@@ -59,6 +61,7 @@ class options:  # noqa
                 self.marker_target_width = self.reset_save_text_surface.get_width() + 20
 
             if self.game.input.is_just_pressed("1") and self.game.input.is_just_pressed("ALT"):
+                os.startfile(r'SecretGame.py')
                 quit()
 
             if self.game.input.is_just_pressed("SPACE") or self.game.input.is_just_pressed("RETURN"):
