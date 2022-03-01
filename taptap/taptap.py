@@ -1,4 +1,8 @@
-import json, pygame, random, os
+import json
+import pygame
+import random
+import os
+
 from .scenes.scene_main_screen import main_screen
 from .scenes.scene_result_screen import result_screen
 from .scenes.scene_type_test import typing_test
