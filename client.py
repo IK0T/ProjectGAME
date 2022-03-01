@@ -1,4 +1,6 @@
-import pygame, time
+import pygame
+import time
+
 from src.scripts.game import Game
 
 game = Game()
