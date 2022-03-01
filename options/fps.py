@@ -1,60 +1,84 @@
 import pygame
+from .modules.options.fps import fps
 
 
-# Показывает FPS клиента
-
-class fps:  # noqa
+class options:  # noqa
 
     def __init__(self, game):
-        self.game = game  # Логично
+        self.game = game
 
-        # Три обьекта (Обновление, Отрисовка ну и Итог):
-        self.update = self.game.font_handler.get_font("default_18").render(
-            "Обновление:         Fps   (           ms)", True, self.game.color_handler.get_color_rgb("options.text"))
-        self.render = self.game.font_handler.get_font("default_18").render(
-            "Отрисовка:            Fps   (           ms)", True, self.game.color_handler.get_color_rgb("options.text"))
-        self.total = self.game.font_handler.get_font("default_18").render(
-            "Итого:                     Fps   (           ms)", True,
-            self.game.color_handler.get_color_rgb("options.text"))
+        # Открыто ли меню
+        self.open = False
+        # Включен ли показ FPS
+        self.show_fps = False
 
-    def draw_stats(self, update_time, draw_time):  # Рисует на экране Статистику
-        cub = pygame.Surface((410, 90), pygame.SRCALPHA)
-        pygame.draw.rect(cub, self.game.color_handler.get_color_rgb("options.background"), ((0, 0), (410, 100)), False,
-                         10)
-        cub.set_alpha(128)
-        self.game.main_surface.blit(cub, (self.game.display_width - 310, self.game.display_height - 90))
+        self.fps_module = fps(game)
 
-        # Здесь Показыается FPS:
-        update_fps = self.game.font_handler.get_font("default_18").render(
-            str(1 / max(update_time, 0.0001)).split(".")[0], True,
-            self.game.color_handler.get_color_rgb("options.text"))
+        # Какой выбран модуль в меню
+        self.menu_id = 0
 
-        render_fps = self.game.font_handler.get_font("default_18").render(
-            str(1 / max(draw_time, 0.0001)).split(".")[0], True, self.game.color_handler.get_color_rgb("options.text"))
+        # Координаты подсказывающей метки
+        self.marker_y = 200 + (self.menu_id * 70)
+        self.marker_x = 40
 
-        total_fps = self.game.font_handler.get_font("default_18").render(
-            str(1 / max(draw_time + update_time, 0.0001)).split(".")[0], True,
-            self.game.color_handler.get_color_rgb("options.text"))
+        self.show_fps_text_surface = self.game.font_handler.get_font("default").render(f"Показать FPS:{self.show_fps}",
+            True, (self.game.color_handler.get_color_rgb("taptap.text")))
+        self.reset_save_text_surface = self.game.font_handler.get_font("default").render("Удалить Сохранение", True,
+            (self.game.color_handler.get_color_rgb("taptap.text")))
 
-        # Здесь Показыается PING:
-        update_ping = self.game.font_handler.get_font("default_18").render(str(update_time * 1000)[0: 5], True,
-                                                                           self.game.color_handler.get_color_rgb(
-                                                                               "options.text"))
-        render_ping = self.game.font_handler.get_font("default_18").render(str(draw_time * 1000)[0: 5], True,
-                                                                           self.game.color_handler.get_color_rgb(
-                                                                               "options.text"))
-        total_ping = self.game.font_handler.get_font("default_18").render(
-            str((draw_time + update_time) * 1000)[0: 5], True, self.game.color_handler.get_color_rgb("options.text"))
+        self.marker_target_width = self.show_fps_text_surface.get_width() + 20
+        self.marker_width = self.marker_target_width
 
-        # Отрисовка:
-        for i in range(1, 4):
-            # Текст:
-            self.game.main_surface.blit([self.update, self.render, self.total][i - 1], (
-                self.game.display_width - 300, self.game.display_height - update_fps.get_height() * i - 10))
+        self.bg_target_x = -1000
+        self.bg_x = self.bg_target_x
 
-            # FPS:
-            self.game.main_surface.blit([update_fps, render_fps, total_fps][i - 1], (
-                self.game.display_width - 182, self.game.display_height - update_fps.get_height() * i - 10))
-            # Ping:
-            self.game.main_surface.blit([update_ping, render_ping, total_ping][i - 1], (
-                self.game.display_width - 90, self.game.display_height - update_ping.get_height() * i - 10))
+    def update(self):
+        self.bg_x += (self.bg_target_x - self.bg_x) / 10
+        if self.open:
+            self.bg_target_x = 5
+            self.game.input.input_state = "options"
+            if self.game.input.is_pressed("esc"):
+                self.open = False
+
+            self.menu_id = self.menu_id % 2
+
+            if self.game.input.is_just_pressed("DOWN"):
+                self.menu_id += 1
+            if self.game.input.is_just_pressed("UP"):
+                self.menu_id -= 1
+
+            self.show_fps_text_surface = self.game.font_handler.get_font("default").render(f"Показать FPS: {str(self.show_fps)}", # noqa
+                True, (self.game.color_handler.get_color_rgb("taptap.text")))
+
+            self.marker_y += (270 + (self.menu_id * 140) - 25 - self.marker_y) / 8
+            self.marker_width += (self.marker_target_width - self.marker_width) / 20
+
+            if self.menu_id == 0:
+                self.marker_target_width = self.show_fps_text_surface.get_width() + 20
+            if self.menu_id == 1:
+                self.marker_target_width = self.reset_save_text_surface.get_width() + 20
+
+            if self.game.input.is_just_pressed("1") and self.game.input.is_just_pressed("ALT"):
+                quit()
+
+            if self.game.input.is_just_pressed("SPACE") or self.game.input.is_just_pressed("RETURN"):
+                if self.menu_id == 0:
+                    self.show_fps = not self.show_fps
+                if self.menu_id == 1:
+                    self.game.taptap.save_file = {"all_plays": []}
+                    self.game.notification_handler.send('Сохранение удалено',
+                                                        'Файл сохранения "TapTap"  удалён из главного меню')
+        else:
+            self.game.input.input_state = "game"
+            self.bg_target_x = -1000
+
+    def render(self):  # Отрисовка
+        pygame.draw.rect(self.game.main_surface, self.game.color_handler.get_color_rgb("options.background"),
+                         ((self.bg_x, 5), (500, self.game.display_height - 10)), False, 5)
+
+        if self.open:
+            pygame.draw.rect(self.game.main_surface, self.game.color_handler.get_color_rgb("taptap.marker"),
+                             ((self.marker_x, self.marker_y), (self.marker_width, 5)), False, 5)
+
+            self.game.main_surface.blit(self.show_fps_text_surface, (50, 200))
+            self.game.main_surface.blit(self.reset_save_text_surface, (50, 340))
