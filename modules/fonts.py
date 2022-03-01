@@ -11,7 +11,8 @@ class Font_Handler:
     }
 
     def load_font(self, font, size, name=""):
-        font_file = pygame.font.Font(os.path.join("src", "resources", self.game.current_assetpack, "assets", "fonts", font + ".ttf"), size)
+        font_file = pygame.font.Font(os.path.join("src", "resources", self.game.current_assetpack,
+                                                  "assets", "fonts", font + ".ttf"), size)
         if name == "":
             self.fonts[font] = {
                 "file": font_file,
