@@ -81,7 +81,7 @@ def main():
 
         if pygame.sprite.collide_mask(ball, paddleA) or pygame.sprite.collide_mask(ball, paddleB):
           ball.bounce()
-          hitsound = pygame.mixer.Sound("Sound/hit.wav")
+          hitsound = pygame.mixer.Sound("Sound/Sound_hit.wav")
           hitsound.play()
 
         screen.fill(BLACK)
