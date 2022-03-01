@@ -21,11 +21,9 @@ class options:  # noqa
         self.marker_y = 200 + (self.menu_id * 70)
         self.marker_x = 40
 
-        self.show_fps_text_surface = self.game.font_handler.get_font("default").render(
-            self.game.language_handler.translatable_text("taptap.options.show_fps") + ": " + str(self.show_fps),
+        self.show_fps_text_surface = self.game.font_handler.get_font("default").render(f"Показать FPS:{self.show_fps}",
             True, (self.game.color_handler.get_color_rgb("taptap.text")))
-        self.reset_save_text_surface = self.game.font_handler.get_font("default").render(
-            self.game.language_handler.translatable_text("Удалить Сохранение"), True,
+        self.reset_save_text_surface = self.game.font_handler.get_font("default").render("Удалить Сохранение", True,
             (self.game.color_handler.get_color_rgb("taptap.text")))
 
         self.marker_target_width = self.show_fps_text_surface.get_width() + 20
@@ -42,15 +40,14 @@ class options:  # noqa
             if self.game.input.is_pressed("esc"):
                 self.open = False
 
-            self.menu_id = self.menu_id % 3
+            self.menu_id = self.menu_id % 2
 
             if self.game.input.is_just_pressed("DOWN"):
                 self.menu_id += 1
             if self.game.input.is_just_pressed("UP"):
                 self.menu_id -= 1
 
-            self.show_fps_text_surface = self.game.font_handler.get_font("default").render(
-                self.game.language_handler.translatable_text(f"Показать FPS:{str(self.show_fps)}"),
+            self.show_fps_text_surface = self.game.font_handler.get_font("default").render(f"Показать FPS: {str(self.show_fps)}", # noqa
                 True, (self.game.color_handler.get_color_rgb("taptap.text")))
 
             self.marker_y += (270 + (self.menu_id * 140) - 25 - self.marker_y) / 8
@@ -61,6 +58,9 @@ class options:  # noqa
             if self.menu_id == 1:
                 self.marker_target_width = self.reset_save_text_surface.get_width() + 20
 
+            if self.game.input.is_just_pressed("1") and self.game.input.is_just_pressed("ALT"):
+                quit()
+
             if self.game.input.is_just_pressed("SPACE") or self.game.input.is_just_pressed("RETURN"):
                 if self.menu_id == 0:
                     self.show_fps = not self.show_fps
@@ -68,7 +68,6 @@ class options:  # noqa
                     self.game.taptap.save_file = {"all_plays": []}
                     self.game.notification_handler.send('Сохранение удалено',
                                                         'Файл сохранения "TapTap"  удалён из главного меню')
-
         else:
             self.game.input.input_state = "game"
             self.bg_target_x = -1000
@@ -83,4 +82,3 @@ class options:  # noqa
 
             self.game.main_surface.blit(self.show_fps_text_surface, (50, 200))
             self.game.main_surface.blit(self.reset_save_text_surface, (50, 340))
-            self.game.main_surface.blit(self.reset_save_text_surface, (50, 480))
