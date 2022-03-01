@@ -1,4 +1,7 @@
-import json, os, pygame
+import json
+import os
+import pygame
+
 pygame.font.init()
 
 class Font_Handler:
