@@ -2,7 +2,6 @@ import pygame, os, json, pyautogui, sys, time
 
 from .modules.input import Input
 from .modules.notification import Notification_Handler
-from .modules.language import Language_Handler
 from .modules.colors import Color_Handler
 from .modules.fonts import Font_Handler
 from .modules.sound import Sound_Handler
@@ -88,7 +87,7 @@ class Game:
 
         self.notification_handler.render()
 
-        copyright_text = self.font_handler.get_font("default_15").render("IK0T&ARSENIQ", True, (self.color_handler.get_color_rgb("typemania.text")))
+        copyright_text = self.font_handler.get_font("default_15").render("IK0T&ARSENIQ", True, (self.color_handler.get_color_rgb("taptap.text")))
         self.main_surface.blit(copyright_text, (self.display_width / 2 - copyright_text.get_width() / 2, self.display_height - self.font_handler.get_font_size("default_15") - 10))
 
     def main_loop_final(self, update_time, render_time):
