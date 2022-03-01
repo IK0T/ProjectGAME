@@ -33,7 +33,6 @@ class Game:
     def __init__(self):
         self.input = Input()
         self.notification_handler = Notification_Handler(self)
-        self.language_handler = Language_Handler(self)
         self.color_handler = Color_Handler(self)
         self.font_handler = Font_Handler(self)
         self.sound_handler = Sound_Handler(self)
