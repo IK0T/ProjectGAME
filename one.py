@@ -182,7 +182,7 @@ class Font_Handler:
         self.load_font("default", 18, "default_18")
         self.load_font("default", 15, "default_15")
 
-
+/*
 class Sound_Handler:
 
     sounds = {}
@@ -197,7 +197,7 @@ class Sound_Handler:
 
     def play_sound(self, sound_id):
         self.sounds[sound_id]["file"].play()
-
+*/
 
 class options:  # noqa
 
@@ -465,7 +465,7 @@ class typing_test:  # noqa
 
         self.time = 1
         # Звук ошибки
-        self.game.sound_handler.load_sound("error", "error")
+        # self.game.sound_handler.load_sound("error", "error")
 
         self.has_started = False
 
@@ -527,12 +527,12 @@ class typing_test:  # noqa
                     else:
                         exec('self.tmp_key = "' + self.type_this[len(self.typed_text)].lower() + '"')
                     if self.game.input.is_pressed(self.tmp_key, "game"):  # noqa
-                        self.game.taptap.play_key_sound()
+                        # self.game.taptap.play_key_sound()
                         self.typed_text += self.type_this[len(self.typed_text)]
                         if self.tmp_key != "SPACE":  # noqa
                             self.typed_entries += 1
                     else:
-                        self.game.sound_handler.play_sound("error")
+                        # self.game.sound_handler.play_sound("error")
                         self.errors += 1
 
         else:
@@ -776,10 +776,10 @@ class taptap:
         self.main_screen_scene = main_screen(self.game)
         self.pack_selection_scene = pack_selection(self.game)
 
-        self.game.sound_handler.load_sound("key_sound_0", "key_sound_0")
-        self.game.sound_handler.load_sound("key_sound_1", "key_sound_1")
-        self.game.sound_handler.load_sound("key_sound_2", "key_sound_2")
-        self.game.sound_handler.load_sound("key_sound_3", "key_sound_3")
+        # self.game.sound_handler.load_sound("key_sound_0", "key_sound_0")
+        # self.game.sound_handler.load_sound("key_sound_1", "key_sound_1")
+        # self.game.sound_handler.load_sound("key_sound_2", "key_sound_2")
+        # self.game.sound_handler.load_sound("key_sound_3", "key_sound_3")
 
         if not os.path.exists(os.path.join("save_data", "taptap_save.json")):
             with open(os.path.join("save_data", "taptap_save.json"), "w") as file:
@@ -792,9 +792,9 @@ class taptap:
     clock = pygame.time.Clock()
     dt = 0
 
-    def play_key_sound(self):
-        random_int = random.randint(0, 3)
-        self.game.sound_handler.play_sound("key_sound_" + str(random_int))
+    # def play_key_sound(self):
+    #     random_int = random.randint(0, 3)
+    #     self.game.sound_handler.play_sound("key_sound_" + str(random_int))
 
     def switch_scene(self, scene):
         self.current_scene = scene
@@ -898,7 +898,7 @@ class Game:
         self.notification_handler = Notification_Handler(self)
         self.color_handler = Color_Handler(self)
         self.font_handler = Font_Handler(self)
-        self.sound_handler = Sound_Handler(self)
+        # self.sound_handler = Sound_Handler(self)
 
         self.taptap= taptap(self)
 
