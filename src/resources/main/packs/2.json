@@ -2,6 +2,21 @@
     "display_name": "Случайное слово!",
     "quotes": [
         {"quote": "Hello", "author": "Привет"},
+        {"quote": "Armchair", "author": "Кресло"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
+        {"quote": "Hello", "author": "Привет"},
         {"quote": "Emptiness", "author": "Пустота"}
     ]
 }
