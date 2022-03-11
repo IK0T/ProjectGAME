@@ -182,7 +182,7 @@ class Font_Handler:
         self.load_font("default", 18, "default_18")
         self.load_font("default", 15, "default_15")
 
-/*
+"""
 class Sound_Handler:
 
     sounds = {}
@@ -197,7 +197,7 @@ class Sound_Handler:
 
     def play_sound(self, sound_id):
         self.sounds[sound_id]["file"].play()
-*/
+"""
 
 class options:  # noqa
 
