@@ -8,4 +8,4 @@ Game for Maks
 
 В "src/scripts/modules" содержатся скрипты для получения и использование ресурсов.
 
-По пути "src/scripts/typemania/scenes/" находтся игровые сцены меню, итогов и другие. 
+По пути "src/scripts/taptap/scenes/" находтся игровые сцены меню, итогов и другие. 
